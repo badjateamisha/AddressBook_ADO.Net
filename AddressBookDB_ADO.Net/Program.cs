@@ -3,9 +3,10 @@ using AddressBookDB_ADO.net;
 
 Console.WriteLine("Hello, AddressBook ADO.net!");
 AddressBookRepo address = new();
+AddressBookModel addressbook = new AddressBookModel();
 while (true)
 {
-    Console.WriteLine("Choose the option :\n1)Create a Database\n2)Create table in DB\n3)Insert Values ti Table\n4)Retrieve values from Table");
+    Console.WriteLine("Choose the option :\n1)Create a Database\n2)Create table in DB\n3)Insert Values ti Table\n4)Retrieve values from Table\n6)Update details of Contact\n7)Delete Contact");
     int option = Convert.ToInt16(Console.ReadLine());
     switch (option)
     {
@@ -16,7 +17,6 @@ while (true)
             address.CreateTable();
             break;
         case 3:
-            AddressBookModel addressbook = new AddressBookModel();
             addressbook.FirstName = "Amisha";
             addressbook.LastName = "Jain";
             addressbook.Address = "Qwerty Colony";
@@ -48,6 +48,10 @@ while (true)
         case 6:
             string UpdatedAddress = address.updateEmployeeDetails();
             Console.WriteLine(UpdatedAddress);
+            break;
+        case 7:
+            addressbook.FirstName = "Sagar";
+            address.DeleteContact(addressbook);
             break;
         default:
             Console.WriteLine("Please choose correct option");
