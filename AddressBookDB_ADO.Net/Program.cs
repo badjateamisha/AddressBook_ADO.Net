@@ -6,7 +6,7 @@ AddressBookRepo address = new();
 AddressBookModel addressbook = new AddressBookModel();
 while (true)
 {
-    Console.WriteLine("Choose the option :\n1)Create a Database\n2)Create table in DB\n3)Insert Values ti Table\n4)Retrieve values from Table\n6)Update details of Contact\n7)Delete Contact\n8)Count Of Records by City or State\n9)Get Records by State\n10)Get Records by City");
+    Console.WriteLine("Choose the option :\n1)Create a Database\n2)Create table in DB\n3)Insert Values ti Table\n4)Retrieve values from Table\n6)Update details of Contact\n7)Delete Contact\n8)Count Of Records by City or State\n9)Get Records by State\n10)Get Records by City\n11)Alphabetically Sorted for given city");
     int option = Convert.ToInt16(Console.ReadLine());
     switch (option)
     {
@@ -67,6 +67,10 @@ while (true)
         case 10:
             Console.WriteLine("Get Contacts by City name");
             address.GetAllContactByCity();
+            break;
+        case 11:
+            Console.WriteLine("Get Contacts by City name in Alphabetical Order");
+            address.GetAllContactsInAlphbeticalOrderByCity();
             break;
         default:
             Console.WriteLine("Please choose correct option");
