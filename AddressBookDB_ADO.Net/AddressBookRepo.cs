@@ -215,6 +215,30 @@ namespace AddressBookDB_ADO.net
             }
             return false;
         }
+        public int CountOfEmployeeDetailsByCity()
+        {
+            int count;
+            SqlConnection Connection = new SqlConnection(@"Data Source=LAPTOP-2UH1FDRP\MSSQLSERVER01; Initial Catalog =AddressBookForADO; Integrated Security = True;");
+            connection.Open();
+            string query = @"Select count(*) from AddressBook where City='Alwal';";
+            SqlCommand command = new SqlCommand(query, connection);
+            object res = command.ExecuteScalar();
+            connection.Close();
+            int Count = (int)res;
+            return Count;
+        }
+        public int CountOfEmployeeDetailsByState()
+        {
+            int count;
+            SqlConnection Connection = new SqlConnection(@"Data Source=LAPTOP-2UH1FDRP\MSSQLSERVER01; Initial Catalog =AddressBookForADO; Integrated Security = True;");
+            connection.Open();
+            string query = @"Select count(*) from AddressBook where State='AP';";
+            SqlCommand command = new SqlCommand(query, connection);
+            object res = command.ExecuteScalar();
+            connection.Close();
+            int Count = (int)res;
+            return Count;
+        }
 
     }
 }
