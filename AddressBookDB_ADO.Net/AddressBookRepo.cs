@@ -437,5 +437,15 @@ namespace AddressBookDB_ADO.net
                 Console.WriteLine(e.Message);
             }
         }
+        public void AddContactAsFriendAndFamily()
+        {
+            SqlConnection Connection = new SqlConnection(@"Data Source=DESKTOP-V3661QR; Initial Catalog =AddressBookForADO; Integrated Security = True;");
+            connection.Open();
+            string query = @"Insert into AddressBook Values ('Kaira','kkk','XYZ Colony','Abad','MH','431001','9000000005','kaira@gmail.com','School','Friend'),
+                            ('Kaira','kkk','XYZ Colony','Abad','MH','431001','9000000006','kaira@gmail.com','School','Family');";
+            SqlCommand command = new SqlCommand(query, connection);
+            object res = command.ExecuteScalar();
+            connection.Close();
+        }
     }
 }
