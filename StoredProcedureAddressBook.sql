@@ -47,3 +47,13 @@ SET NOCOUNT ON;
 SELECT FirstName,LastName,Address,City,State,Zip,PhoneNumber,Email from AddressBook
 END
 GO
+
+--Delete record
+alter procedure SpAddressBook_Delete
+(
+	@FirstName varchar(50)
+)
+as
+begin
+delete from AddressBook where FirstName=@FirstName;
+End
