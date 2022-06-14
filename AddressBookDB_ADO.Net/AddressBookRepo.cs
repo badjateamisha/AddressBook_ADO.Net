@@ -101,7 +101,7 @@ namespace AddressBookDB_ADO.net
                     {
                         while (datareader.Read())
                         {
-                            addressmodel.AddressBookId = datareader.GetInt32(0);
+                            addressmodel.ID = datareader.GetInt32(0);
                             addressmodel.FirstName = datareader.GetString(1);
                             addressmodel.LastName = datareader.GetString(2);
                             addressmodel.Address = datareader.GetString(3);
@@ -172,12 +172,12 @@ namespace AddressBookDB_ADO.net
         {
             SqlConnection Connection = new SqlConnection(@"Data Source=DESKTOP-V3661QR; Initial Catalog =AddressBookForADO; Integrated Security = True;");
             connection.Open();
-            SqlCommand command = new SqlCommand("update AddressBook set Address='XYZ Colony' where FirstName='Shravanthi'", connection);
+            SqlCommand command = new SqlCommand("update AddressBook set Address='ABC Colony' where FirstName='Amisha'", connection);
 
             int effectedRow = command.ExecuteNonQuery();
             if (effectedRow == 1)
             {
-                string query = @"Select Address from AddressBook where FirstName='Shravanthi';";
+                string query = @"Select Address from AddressBook where FirstName='Amisha';";
                 SqlCommand cmd = new SqlCommand(query, connection);
                 object res = cmd.ExecuteScalar();
                 connection.Close();
@@ -218,9 +218,9 @@ namespace AddressBookDB_ADO.net
         public int CountOfEmployeeDetailsByCity()
         {
             int count;
-            SqlConnection Connection = new SqlConnection(@"Data Source=LAPTOP-2UH1FDRP\MSSQLSERVER01; Initial Catalog =AddressBookForADO; Integrated Security = True;");
+            SqlConnection Connection = new SqlConnection(@"Data Source=DESKTOP-V3661QR; Initial Catalog =AddressBookForADO; Integrated Security = True;");
             connection.Open();
-            string query = @"Select count(*) from AddressBook where City='Alwal';";
+            string query = @"Select count(*) from AddressBook where City='Pune';";
             SqlCommand command = new SqlCommand(query, connection);
             object res = command.ExecuteScalar();
             connection.Close();
@@ -230,14 +230,100 @@ namespace AddressBookDB_ADO.net
         public int CountOfEmployeeDetailsByState()
         {
             int count;
-            SqlConnection Connection = new SqlConnection(@"Data Source=LAPTOP-2UH1FDRP\MSSQLSERVER01; Initial Catalog =AddressBookForADO; Integrated Security = True;");
+            SqlConnection Connection = new SqlConnection(@"Data Source=DESKTOP-V3661QR; Initial Catalog =AddressBookForADO; Integrated Security = True;");
             connection.Open();
-            string query = @"Select count(*) from AddressBook where State='AP';";
+            string query = @"Select count(*) from AddressBook where State='MH';";
             SqlCommand command = new SqlCommand(query, connection);
             object res = command.ExecuteScalar();
             connection.Close();
             int Count = (int)res;
             return Count;
+        }
+        public void GetAllContactByState()
+        {
+            try
+            {
+                SqlConnection Connection = new SqlConnection(@"Data Source=DESKTOP-V3661QR; Initial Catalog =AddressBookForADO; Integrated Security = True;");
+                using (this.connection)
+                {
+                    string Query = @"Select * from AddressBook where State='AP';";
+                    SqlCommand cmd = new SqlCommand(Query, this.connection);
+                    this.connection.Open();
+                    SqlDataReader datareader = cmd.ExecuteReader();
+                    if (datareader.HasRows)
+                    {
+                        while (datareader.Read())
+                        {
+                            addressmodel.ID = datareader.GetInt32(0);
+                            addressmodel.FirstName = datareader.GetString(1);
+                            addressmodel.LastName = datareader.GetString(2);
+                            addressmodel.Address = datareader.GetString(3);
+                            addressmodel.City = datareader.GetString(4);
+                            addressmodel.State = datareader.GetString(5);
+                            addressmodel.Zip = datareader.GetString(6);
+                            addressmodel.PhoneNumber = datareader.GetString(7);
+                            addressmodel.Email = datareader.GetString(8);
+
+                            Console.WriteLine(addressmodel.FirstName + " " +
+                                addressmodel.LastName + " " +
+                                addressmodel.Address + " " +
+                                addressmodel.City + " " +
+                                addressmodel.State + " " +
+                                addressmodel.Zip + " " +
+                                addressmodel.PhoneNumber + " " +
+                                addressmodel.Email + " "
+                                );
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+        public void GetAllContactByCity()
+        {
+            try
+            {
+                SqlConnection Connection = new SqlConnection(@"Data Source=LAPTOP-2UH1FDRP\MSSQLSERVER01; Initial Catalog =AddressBookForADO; Integrated Security = True;");
+                using (this.connection)
+                {
+                    string Query = @"Select * from AddressBook where City='Alwal';";
+                    SqlCommand cmd = new SqlCommand(Query, this.connection);
+                    this.connection.Open();
+                    SqlDataReader datareader = cmd.ExecuteReader();
+                    if (datareader.HasRows)
+                    {
+                        while (datareader.Read())
+                        {
+                            addressmodel.ID = datareader.GetInt32(0);
+                            addressmodel.FirstName = datareader.GetString(1);
+                            addressmodel.LastName = datareader.GetString(2);
+                            addressmodel.Address = datareader.GetString(3);
+                            addressmodel.City = datareader.GetString(4);
+                            addressmodel.State = datareader.GetString(5);
+                            addressmodel.Zip = datareader.GetString(6);
+                            addressmodel.PhoneNumber = datareader.GetString(7);
+                            addressmodel.Email = datareader.GetString(8);
+
+                            Console.WriteLine(addressmodel.FirstName + " " +
+                                addressmodel.LastName + " " +
+                                addressmodel.Address + " " +
+                                addressmodel.City + " " +
+                                addressmodel.State + " " +
+                                addressmodel.Zip + " " +
+                                addressmodel.PhoneNumber + " " +
+                                addressmodel.Email + " "
+                                );
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
 
     }
