@@ -239,6 +239,15 @@ namespace AddressBookDB_ADO.net
             int Count = (int)res;
             return Count;
         }
+        public void AddAddressBookNameAndType()
+        {
+            SqlConnection Connection = new SqlConnection(@"Data Source=DESKTOP-V3661QR; Initial Catalog =AddressBookForADO; Integrated Security = True;");
+            connection.Open();
+            string query = @"alter table AddressBook add AddressBookName Varchar(50), AddressBookType Varchar(50);";
+            SqlCommand command = new SqlCommand(query, connection);
+            object res = command.ExecuteScalar();
+            connection.Close();
+        }
         public void GetAllContactByState()
         {
             try

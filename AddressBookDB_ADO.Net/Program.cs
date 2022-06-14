@@ -72,6 +72,10 @@ while (true)
             Console.WriteLine("Get Contacts by City name in Alphabetical Order");
             address.GetAllContactsInAlphbeticalOrderByCity();
             break;
+        case 12:
+            Console.WriteLine("Adding Two Columns AddressBookName and AddressBookType");
+            address.AddAddressBookNameAndType();
+            break;
         default:
             Console.WriteLine("Please choose correct option");
             break;
