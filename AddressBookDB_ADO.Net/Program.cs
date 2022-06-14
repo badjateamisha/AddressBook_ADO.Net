@@ -6,7 +6,7 @@ AddressBookRepo address = new();
 AddressBookModel addressbook = new AddressBookModel();
 while (true)
 {
-    Console.WriteLine("Choose the option :\n1)Create a Database\n2)Create table in DB\n3)Insert Values in Table\n4)Retrieve values from Table\n6)Update details of Contact\n7)Delete Contact\n8)Count Of Records by City or State\n9)Get Records by State\n10)Get Records by City\n11)Alphabetically Sorted for given city\n12)Alter table add columns AddressBook Name and Type\n13)Get contact by Type\n14)Count By AddressBookType");
+    Console.WriteLine("Choose the option :\n1)Create a Database\n2)Create table in DB\n3)Insert Values in Table\n4)Retrieve values from Table\n6)Update details of Contact\n7)Delete Contact\n8)Count Of Records by City or State\n9)Get Records by State\n10)Get Records by City\n11)Alphabetically Sorted for given city\n12)Alter table add columns AddressBook Name and Type\n13)Get contact by Type\n14)Count By AddressBookType\n15)Add Same person as Friend and Family");
     int option = Convert.ToInt16(Console.ReadLine());
     switch (option)
     {
@@ -82,6 +82,9 @@ while (true)
         case 14:
             int countByType = address.CountOfEmployeeDetailsByType();
             Console.WriteLine("Count of Records by Type=Colleague :" + countByType);
+            break;
+        case 15:
+            address.AddContactAsFriendAndFamily();
             break;
         default:
             Console.WriteLine("Please choose correct option");
