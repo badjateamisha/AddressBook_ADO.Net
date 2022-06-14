@@ -9,7 +9,7 @@ namespace AddressBookDB_ADO.net
 {
     public class AddressBookRepo
     {
-        public void Create_Database()
+        public void CreateDatabase()
         {
             try
             {
@@ -23,6 +23,22 @@ namespace AddressBookDB_ADO.net
             catch (Exception e)
             {
                 Console.WriteLine("exception occured while creating database:" + e.Message + "\t");
+            }
+        }
+        public void CreateTable()
+        {
+            try
+            {
+                SqlConnection Connection = new SqlConnection(@"Data Source=DESKTOP-V3661QR; Initial Catalog =AddressBookForADO; Integrated Security = True;");
+                Connection.Open();
+                SqlCommand cmd = new SqlCommand("Create table AddressBook(ID int identity(1,1)primary key,FirstName varchar(200),LastName varchar(200),Address varchar(200), City varchar(200), State varchar(200), Zip varchar(200), PhoneNumber varchar(50), Email varchar(200)); ", Connection);
+                cmd.ExecuteNonQuery();
+                Console.WriteLine("AddressBook table is created!");
+                Connection.Close();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("exception occured while creating table:" + e.Message + "\t");
             }
         }
     }
