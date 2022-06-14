@@ -31,6 +31,24 @@ while (true)
         case 4:
             address.GetAllContact();
             break;
+        case 5:
+            //Reference Method Call
+            AddressBookModel addressbook1 = new AddressBookModel();
+            addressbook1.FirstName = "ameesa";
+            addressbook1.LastName = "jain";
+            addressbook1.Address = "Qwerty Colony";
+            addressbook1.City = "Pune";
+            addressbook1.State = "MH";
+            addressbook1.Zip = "411033";
+            addressbook1.PhoneNumber = "9000000001";
+            addressbook1.Email = "amisha@gmail.com";
+            address.UpdateContact(addressbook1);
+            Console.WriteLine("Record Updated successfully");
+            break;
+        case 6:
+            string UpdatedAddress = address.updateEmployeeDetails();
+            Console.WriteLine(UpdatedAddress);
+            break;
         default:
             Console.WriteLine("Please choose correct option");
             break;
