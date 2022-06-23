@@ -1,0 +1,8 @@
+﻿First Name:Sugun
+Last Name:Badjate
+Address:Abad
+City:Pune
+State:MH
+Zip:431001
+Phone Number:9000000007
+Email:sugun@gmail.com
